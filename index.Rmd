@@ -210,6 +210,7 @@ Your discussion of plot 1
 
 #ggplot(final_join, aes(x = country))+geom_bar(aes(y=malaria), stat="summary", fun=mean)
 
+
 ```
 
 Your discussion of plot 2
