@@ -192,8 +192,7 @@ Your discussion of wrangling section here. Feel encouraged to break up into more
 library(ggplot2)
 
 ggplot(data = final_join, aes(x = agriculture, y = forest_cover)) + geom_point(aes(color=year, size=malaria))+
-  geom_smooth(method="lm")+ scale_color_gradient(low="yellow", high="red")+ ggtitle("Comparison of Land Use for Agriculture vs. Forest Cover")+ xlab("Percent of Land Use for Agriculture")+ ylab("Percent of Land Use Covered in Forest")+ scale_y_continuous(breaks=seq(0, 100, 10))+ scale_x_continuous(breaks=seq(0, 100, 10))
-#scale_x_continuous(breaks=seq(0, 1, .1), labels=c(0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1))
+  geom_smooth(method="lm")+ scale_color_gradient(low="yellow", high="red")+ ggtitle("Comparison of Land Used for Agriculture vs Covered in Forest")+ xlab("Percent of Land Used for Agriculture")+ ylab("Percent of Land Covered in Forest")+ scale_y_continuous(breaks=seq(0, 100, 10))+ scale_x_continuous(breaks=seq(0, 100, 10))+ theme_gray()
 
 ```
 
@@ -201,14 +200,11 @@ Your discussion of plot 1
 
 ```{R}
 # your plot 2 could do bar plot with brazil and such
+amazon <- final_join %>% filter(country %in% c("Brazil","Columbia", "Peru", "Bolivia", "Venezuela", "Guyana", "Suriname"))
 
-#final_join %>% filter(country %in% c("Brazil","Columbia", "Peru", "Bolivia", "Venezuela", "Guyana", "Suriname")) %>% na.omit() %>% ggplot(final_join, aes(x=country, y=malaria, fill=year))+ geom_bar(stat="summary",position="dodge")+ geom_errorbar(stat="summary", position="dodge")
-
-#ggplot(data = final_join, aes(x = agriculture, y = malaria, color=year)) + geom_point()+ geom_smooth(method="lm")
-
-#final_join %>% na.omit() %>% ggplot(final_join, aes(x=country, y=malaria))+ geom_point()
-
-#ggplot(final_join, aes(x = country))+geom_bar(aes(y=malaria), stat="summary", fun=mean)
+ ggplot(amazon, aes(x = country, y = malaria, fill=country))+
+  geom_bar(stat="summary",fun=mean)+
+  geom_errorbar(stat="summary", fun.data=mean_se, width=.5)+ggtitle("Malaria Cases per 100,000 people in Amazonian Countries")+ xlab("Country")+ ylab("Malaria Cases (per 100,000 people)")+ theme(legend.position="none")
 
 
 ```
@@ -217,7 +213,9 @@ Your discussion of plot 2
 
 ```{R}
 # your plot 3 nigeria??
-ggplot(data = final_join, aes(x = year, y = malaria, color=livestock))+ geom_point() +geom_jitter()+ geom_line()
+deforest <- final_join %>% filter(country %in% c("Nigeria","Honduras", "Philippines", "Benin", "Ghana", "Indonesia", "Nepal"))
+
+ggplot(data = deforest, aes(x= year, y= livestock))+ geom_point(aes(color=country), size=2)+ geom_smooth(aes(color=country), method="lm", se=F, size=.5)+ theme_gray()+ ggtitle("Livestock Production in Countries with High Deforestation Rates")+ ylab("Livestock Production Index")+ xlab("Year")+ scale_x_continuous(breaks=seq(1995, 2005, 1))+ theme_bw()+ geom_point(stat="summary", size=6)+ geom_smooth(method="lm", color="black")
 
 ```
 
