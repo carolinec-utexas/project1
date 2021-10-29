@@ -33,13 +33,9 @@ library(tidyverse)
 library(dplyr)
 
 agriculture<-read_csv("agriculture.csv")
-
 forest<- read_csv("forest.csv")
-
 livestock <- read_csv("livestock.csv")
-
 forest_coverage <- read_csv("forest_coverage.csv")
-
 malaria_prop <- read_csv("malaria_prop.csv")
 ```
 
@@ -50,8 +46,6 @@ If your datasets are tidy already, demonstrate that you can reshape data with pi
 For all 4 datasets, I used pivot_longer to create a column for the year variable for the years between 1995-2005. I used select to only pull data on my ID variable, the years 1995-2005, and the malaria/land-use data. My ID variable is "country," so to prevent the "year" column from duplicating when I joined the 4 datasets, I united the country and year columns. Also, I used an underscore to combine these data because if I used a space, it would be difficult to separate these data back into "country" and "year" because some countries are more than one word (ex: Papua New Guinea).
 
 ```{R}
-# your tidying code (if applicable; can also wait until wrangling section)
-
 #Demonstration that I can use pivot wider/longer:
 tidy_forest<- forest_coverage %>% pivot_longer(c("1995":"2005"), names_to="year", values_to="forest_cover") %>% select(country, year, forest_cover)
 tidy_forest %>% pivot_wider(names_from="year", values_from="forest_cover")
@@ -104,7 +98,6 @@ anti<- forest_coverage %>% anti_join(malaria_prop, by="country")
 anti %>% summarize(n_distinct(country))
 head(anti)
 
-
 #IDs that the datasets have in common
 final_join %>% summarize(n_distinct(country))
 
@@ -135,31 +128,34 @@ final_join<- final_join %>% select(country, year, forest_cover, agriculture, eve
 ```{R}
 #Summary Statistics Demonstration
 library(knitr)
+library(kableExtra)
 
-#Average number of malaria cases (per 100,000 people) for each country across 1995-2005
-final_join %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria)) %>% arrange(desc(mean_malaria))
+#1: Average number of malaria cases (per 100,000 people) for each country from 1995-2005
+final_join %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria)) %>% arrange(desc(mean_malaria)) %>% kable(align = 'l', digits = 3) %>% kable_styling(font_size = 15)
+
 final_join %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria)) %>% filter(country=="China")
-updated_join<- final_join %>% group_by(country) %>% na.omit() %>% mutate(mean_malaria=mean(malaria))
+
+#2: Categorical variable table of counts
+final_join %>% group_by(country) %>% na.omit %>% summarize(n=n())
+
+#3: Missing values for each variable- Define a function (user-defined) and use it inside summarize
+final_join %>% summarize_all(function(x) sum(is.na(x)))
+
+#4: Overall Summary Statistics for Livestock Production Index and Forest Cover using different functions
+final_join %>% group_by(country) %>% na.omit() %>% summarize(sd_livestock=sd(livestock), sd_forest=sd(forest_cover), mean_livestock=mean(livestock), mean_forest=mean(forest_cover), n=n(), se_livestock=sd_livestock/sqrt(n), se_forest=sd_forest/sqrt(n)) %>% select(country, n, mean_livestock, mean_forest, everything()) %>% arrange(desc(mean_livestock)) %>% kable(align = 'lccccccc', digits = 3) %>% kable_styling(font_size = 10) 
 
 ```
-Your discussion of wrangling section here. Feel encouraged to break up into more than once code chunk and discuss each in turn.
+For #1, I grouped the data by country and used summarize to find the average number of malaria cases (per 100,000 people) from 1995-2005. I then arranged the resulting data from highest malaria incidence rate to lowest and found that Zambia had the highest overall rate of malaria incidence (35,800 cases/100,000 people). I was also curious to see what China's overal malaria incidence rate was because China is undergoing significant agricultural expansion and intensification, and the rate of malaria incidence was much lower than Zambia's (6.04 cases/100,000 people). For #2, I found the counts of the categorical variable (country) for each level, and it was 11 for most countries. This is logical because I used data from countries for each year between 1995 and 2005 (11 years total, and some countries might be missing data for a few years). For #3, I created a function inside of summarize to report the number of missing values for each variable. For #4, I found summary statistics using functions such as mean, sd, etc. for forest cover and the Livestock Production Index for each country averaged over the 11 yeats. The data are arranged from highest to lowest livestock production because I was curious to see if there appeared to be a realtionship between livestock production and forest cover.
 
 
 ```{R}
 #stringr
 final_join %>% distinct(country) %>% summarize(sum(str_detect(country, "[ ]")))
 
-#Missing values: Define a function and use it inside summarize
-final_join %>% summarize_all(function(x) sum(is.na(x)))
 
-#Proportion of land use for agriculture to land covered in forest
+#4 Proportion of land use for agriculture to land covered in forest
 final_join %>% mutate(prop_land=agriculture/forest_cover) %>% select(country, year, forest_cover, agriculture, prop_land)
 
-#Categorial variable table of counts
-final_join %>% group_by(country) %>% summarize(n=n())
-
-#unique function 2
-final_join %>% group_by(country) %>% na.omit() %>% summarize(sd_livestock=sd(livestock), sd_forest=sd(forest_cover), mean_livestock=mean(livestock), mean_forest=mean(forest_cover), n=n(), se_live=sd_livestock/sqrt(n), se_forest=sd_forest/sqrt(n))
 
 #unique function 3
 final_join %>% na.omit %>% mutate(livestock_agri=livestock/agriculture) %>% select(country, year, livestock, agriculture, livestock_agri)
@@ -167,8 +163,8 @@ final_join %>% na.omit %>% mutate(livestock_agri=livestock/agriculture) %>% sele
 
 
 ```{R}
-#unique function 4
-final_join %>% filter(country %in% c("Brazil","Columbia", "Peru", "Bolivia", "Venezuela", "Guyana", "Suriname")) %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria), mean_livestock=mean(livestock), mean_agriculture=mean(agriculture), mean_forest=mean(forest_cover)) %>% select(country, mean_malaria, mean_forest, mean_agriculture, mean_livestock) %>% arrange(desc(mean_forest))
+#5: Summary Statistics for Countries that overlap with the Amazon Rainforest
+final_join %>% filter(country %in% c("Brazil","Columbia", "Peru", "Bolivia", "Venezuela", "Guyana", "Suriname")) %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria), mean_livestock=mean(livestock), mean_agriculture=mean(agriculture), mean_forest=mean(forest_cover)) %>% select(country, mean_malaria, mean_forest, mean_agriculture, mean_livestock) %>% arrange(desc(mean_forest)) %>% kable(align = 'lcccc', digits = 3) %>% kable_styling(font_size = 15)
 ```
 
 
