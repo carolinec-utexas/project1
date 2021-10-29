@@ -1913,8 +1913,8 @@ library(kableExtra)
 # 1: Average number of malaria cases (per 100,000 people) for
 # each country from 1995-2005
 final_join %&gt;% group_by(country) %&gt;% na.omit() %&gt;% summarize(mean_malaria = mean(malaria)) %&gt;% 
-    arrange(desc(mean_malaria)) %&gt;% kable(align = &quot;l&quot;, digits = 3) %&gt;% 
-    kable_styling(font_size = 15)</code></pre>
+    arrange(desc(mean_malaria)) %&gt;% head() %&gt;% kable(align = &quot;l&quot;, 
+    digits = 3) %&gt;% kable_styling(font_size = 15)</code></pre>
 <table class="table" style="font-size: 15px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1932,7 +1932,7 @@ mean_malaria
 Zambia
 </td>
 <td style="text-align:left;">
-35800.000
+35800.00
 </td>
 </tr>
 <tr>
@@ -1940,7 +1940,7 @@ Zambia
 Uganda
 </td>
 <td style="text-align:left;">
-32144.444
+32144.44
 </td>
 </tr>
 <tr>
@@ -1948,7 +1948,7 @@ Uganda
 Malawi
 </td>
 <td style="text-align:left;">
-31400.000
+31400.00
 </td>
 </tr>
 <tr>
@@ -1956,7 +1956,7 @@ Malawi
 Sao Tome and Principe
 </td>
 <td style="text-align:left;">
-28881.818
+28881.82
 </td>
 </tr>
 <tr>
@@ -1964,7 +1964,7 @@ Sao Tome and Principe
 Burundi
 </td>
 <td style="text-align:left;">
-28136.364
+28136.36
 </td>
 </tr>
 <tr>
@@ -1972,791 +1972,7 @@ Burundi
 Tanzania
 </td>
 <td style="text-align:left;">
-23694.500
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Namibia
-</td>
-<td style="text-align:left;">
-22572.727
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Liberia
-</td>
-<td style="text-align:left;">
-21398.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mozambique
-</td>
-<td style="text-align:left;">
-18909.790
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Solomon Islands
-</td>
-<td style="text-align:left;">
-17963.636
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gambia
-</td>
-<td style="text-align:left;">
-16752.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Papua New Guinea
-</td>
-<td style="text-align:left;">
-16264.545
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Rwanda
-</td>
-<td style="text-align:left;">
-15470.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ghana
-</td>
-<td style="text-align:left;">
-14224.545
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Angola
-</td>
-<td style="text-align:left;">
-12515.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zimbabwe
-</td>
-<td style="text-align:left;">
-12411.818
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kenya
-</td>
-<td style="text-align:left;">
-11911.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senegal
-</td>
-<td style="text-align:left;">
-10590.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guinea-Bissau
-</td>
-<td style="text-align:left;">
-9979.364
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Benin
-</td>
-<td style="text-align:left;">
-9926.364
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guinea
-</td>
-<td style="text-align:left;">
-9820.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Vanuatu
-</td>
-<td style="text-align:left;">
-9799.091
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Burkina Faso
-</td>
-<td style="text-align:left;">
-8630.909
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mauritania
-</td>
-<td style="text-align:left;">
-8510.909
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Madagascar
-</td>
-<td style="text-align:left;">
-8164.286
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Togo
-</td>
-<td style="text-align:left;">
-8139.091
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Niger
-</td>
-<td style="text-align:left;">
-7896.364
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gabon
-</td>
-<td style="text-align:left;">
-7323.333
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cote d’Ivoire
-</td>
-<td style="text-align:left;">
-6898.889
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sierra Leone
-</td>
-<td style="text-align:left;">
-6392.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mali
-</td>
-<td style="text-align:left;">
-6369.182
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chad
-</td>
-<td style="text-align:left;">
-4446.364
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cameroon
-</td>
-<td style="text-align:left;">
-4246.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Botswana
-</td>
-<td style="text-align:left;">
-3965.636
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Yemen
-</td>
-<td style="text-align:left;">
-3951.900
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guyana
-</td>
-<td style="text-align:left;">
-3936.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo, Dem. Rep. 
-</td>
-<td style="text-align:left;">
-3729.714
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Comoros
-</td>
-<td style="text-align:left;">
-3009.857
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ethiopia
-</td>
-<td style="text-align:left;">
-2829.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Central African Republic
-</td>
-<td style="text-align:left;">
-2802.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Suriname
-</td>
-<td style="text-align:left;">
-2766.182
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Eritrea
-</td>
-<td style="text-align:left;">
-2687.800
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nigeria
-</td>
-<td style="text-align:left;">
-1887.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Eswatini
-</td>
-<td style="text-align:left;">
-1831.273
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:left;">
-1583.444
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo, Rep. 
-</td>
-<td style="text-align:left;">
-1413.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bolivia
-</td>
-<td style="text-align:left;">
-1316.727
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bhutan
-</td>
-<td style="text-align:left;">
-1305.909
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Myanmar
-</td>
-<td style="text-align:left;">
-1189.900
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lao
-</td>
-<td style="text-align:left;">
-1108.727
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Belize
-</td>
-<td style="text-align:left;">
-933.900
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Djibouti
-</td>
-<td style="text-align:left;">
-671.545
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cambodia
-</td>
-<td style="text-align:left;">
-647.909
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Honduras
-</td>
-<td style="text-align:left;">
-547.455
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Peru
-</td>
-<td style="text-align:left;">
-533.556
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sri Lanka
-</td>
-<td style="text-align:left;">
-511.956
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nicaragua
-</td>
-<td style="text-align:left;">
-470.664
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Indonesia
-</td>
-<td style="text-align:left;">
-434.980
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Somalia
-</td>
-<td style="text-align:left;">
-425.875
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ecuador
-</td>
-<td style="text-align:left;">
-411.518
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-North Korea
-</td>
-<td style="text-align:left;">
-352.458
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Colombia
-</td>
-<td style="text-align:left;">
-345.091
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nepal
-</td>
-<td style="text-align:left;">
-344.482
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guatemala
-</td>
-<td style="text-align:left;">
-317.182
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brazil
-</td>
-<td style="text-align:left;">
-272.909
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-India
-</td>
-<td style="text-align:left;">
-203.545
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Haiti
-</td>
-<td style="text-align:left;">
-198.356
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tajikistan
-</td>
-<td style="text-align:left;">
-187.482
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bangladesh
-</td>
-<td style="text-align:left;">
-142.091
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Vietnam
-</td>
-<td style="text-align:left;">
-138.282
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Venezuela
-</td>
-<td style="text-align:left;">
-119.709
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Thailand
-</td>
-<td style="text-align:left;">
-114.100
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Costa Rica
-</td>
-<td style="text-align:left;">
-75.091
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Pakistan
-</td>
-<td style="text-align:left;">
-71.536
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Malaysia
-</td>
-<td style="text-align:left;">
-65.845
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Panama
-</td>
-<td style="text-align:left;">
-64.745
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-South Africa
-</td>
-<td style="text-align:left;">
-56.700
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Philippines
-</td>
-<td style="text-align:left;">
-53.791
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Saudi Arabia
-</td>
-<td style="text-align:left;">
-52.082
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Paraguay
-</td>
-<td style="text-align:left;">
-49.015
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Azerbaijan
-</td>
-<td style="text-align:left;">
-39.812
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Iran
-</td>
-<td style="text-align:left;">
-38.400
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Oman
-</td>
-<td style="text-align:left;">
-32.718
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Iraq
-</td>
-<td style="text-align:left;">
-32.688
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Turkey
-</td>
-<td style="text-align:left;">
-28.017
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dominican Republic
-</td>
-<td style="text-align:left;">
-22.638
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-El Salvador
-</td>
-<td style="text-align:left;">
-19.419
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Jamaica
-</td>
-<td style="text-align:left;">
-14.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Armenia
-</td>
-<td style="text-align:left;">
-9.664
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mexico
-</td>
-<td style="text-align:left;">
-7.793
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kyrgyz Republic
-</td>
-<td style="text-align:left;">
-7.060
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:left;">
-6.038
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mauritius
-</td>
-<td style="text-align:left;">
-5.645
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cape Verde
-</td>
-<td style="text-align:left;">
-4.813
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-South Korea
-</td>
-<td style="text-align:left;">
-4.598
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Georgia
-</td>
-<td style="text-align:left;">
-3.977
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Algeria
-</td>
-<td style="text-align:left;">
-1.321
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Argentina
-</td>
-<td style="text-align:left;">
-1.176
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Russia
-</td>
-<td style="text-align:left;">
-0.546
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Turkmenistan
-</td>
-<td style="text-align:left;">
-0.538
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Syria
-</td>
-<td style="text-align:left;">
-0.473
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Uzbekistan
-</td>
-<td style="text-align:left;">
-0.310
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Morocco
-</td>
-<td style="text-align:left;">
-0.297
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Egypt
-</td>
-<td style="text-align:left;">
-0.038
+23694.50
 </td>
 </tr>
 </tbody>
@@ -2797,7 +2013,7 @@ final_join %&gt;% group_by(country) %&gt;% na.omit() %&gt;% summarize(sd_livesto
     mean_forest = mean(forest_cover), n = n(), se_livestock = sd_livestock/sqrt(n), 
     se_forest = sd_forest/sqrt(n)) %&gt;% select(country, n, mean_livestock, 
     mean_forest, everything()) %&gt;% arrange(desc(mean_livestock)) %&gt;% 
-    kable(align = &quot;lccccccc&quot;, digits = 3) %&gt;% kable_styling(font_size = 10)</code></pre>
+    head() %&gt;% kable(align = &quot;lccccccc&quot;, digits = 3) %&gt;% kable_styling(font_size = 10)</code></pre>
 <table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2984,2599 +2200,8 @@ Somalia
 0.110
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Botswana
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-99.273
-</td>
-<td style="text-align:center;">
-21.900
-</td>
-<td style="text-align:center;">
-5.999
-</td>
-<td style="text-align:center;">
-0.663
-</td>
-<td style="text-align:center;">
-1.809
-</td>
-<td style="text-align:center;">
-0.200
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Syria
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-96.300
-</td>
-<td style="text-align:center;">
-2.382
-</td>
-<td style="text-align:center;">
-14.639
-</td>
-<td style="text-align:center;">
-0.106
-</td>
-<td style="text-align:center;">
-4.414
-</td>
-<td style="text-align:center;">
-0.032
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cambodia
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-95.309
-</td>
-<td style="text-align:center;">
-64.391
-</td>
-<td style="text-align:center;">
-10.780
-</td>
-<td style="text-align:center;">
-2.878
-</td>
-<td style="text-align:center;">
-3.250
-</td>
-<td style="text-align:center;">
-0.868
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo, Dem. Rep. 
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-95.243
-</td>
-<td style="text-align:center;">
-69.300
-</td>
-<td style="text-align:center;">
-2.240
-</td>
-<td style="text-align:center;">
-0.455
-</td>
-<td style="text-align:center;">
-0.847
-</td>
-<td style="text-align:center;">
-0.172
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Afghanistan
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-93.711
-</td>
-<td style="text-align:center;">
-2.070
-</td>
-<td style="text-align:center;">
-9.001
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-3.000
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Comoros
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-91.114
-</td>
-<td style="text-align:center;">
-23.671
-</td>
-<td style="text-align:center;">
-2.068
-</td>
-<td style="text-align:center;">
-1.067
-</td>
-<td style="text-align:center;">
-0.782
-</td>
-<td style="text-align:center;">
-0.403
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Jamaica
-</td>
-<td style="text-align:center;">
-1
-</td>
-<td style="text-align:center;">
-90.300
-</td>
-<td style="text-align:center;">
-31.300
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-<td style="text-align:center;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Vanuatu
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-90.173
-</td>
-<td style="text-align:center;">
-36.100
-</td>
-<td style="text-align:center;">
-6.744
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-2.033
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Solomon Islands
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-86.427
-</td>
-<td style="text-align:center;">
-80.836
-</td>
-<td style="text-align:center;">
-5.165
-</td>
-<td style="text-align:center;">
-0.622
-</td>
-<td style="text-align:center;">
-1.557
-</td>
-<td style="text-align:center;">
-0.187
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-North Korea
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-86.100
-</td>
-<td style="text-align:center;">
-55.478
-</td>
-<td style="text-align:center;">
-16.199
-</td>
-<td style="text-align:center;">
-2.876
-</td>
-<td style="text-align:center;">
-5.400
-</td>
-<td style="text-align:center;">
-0.959
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Haiti
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-85.989
-</td>
-<td style="text-align:center;">
-3.916
-</td>
-<td style="text-align:center;">
-10.560
-</td>
-<td style="text-align:center;">
-0.096
-</td>
-<td style="text-align:center;">
-3.520
-</td>
-<td style="text-align:center;">
-0.032
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Iraq
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-85.109
-</td>
-<td style="text-align:center;">
-1.874
-</td>
-<td style="text-align:center;">
-13.642
-</td>
-<td style="text-align:center;">
-0.011
-</td>
-<td style="text-align:center;">
-4.113
-</td>
-<td style="text-align:center;">
-0.003
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Argentina
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-84.727
-</td>
-<td style="text-align:center;">
-11.518
-</td>
-<td style="text-align:center;">
-6.100
-</td>
-<td style="text-align:center;">
-0.402
-</td>
-<td style="text-align:center;">
-1.839
-</td>
-<td style="text-align:center;">
-0.121
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mozambique
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-84.320
-</td>
-<td style="text-align:center;">
-51.990
-</td>
-<td style="text-align:center;">
-4.158
-</td>
-<td style="text-align:center;">
-0.894
-</td>
-<td style="text-align:center;">
-1.315
-</td>
-<td style="text-align:center;">
-0.283
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Venezuela
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-83.882
-</td>
-<td style="text-align:center;">
-55.418
-</td>
-<td style="text-align:center;">
-7.306
-</td>
-<td style="text-align:center;">
-1.039
-</td>
-<td style="text-align:center;">
-2.203
-</td>
-<td style="text-align:center;">
-0.313
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sao Tome and Principe
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-83.709
-</td>
-<td style="text-align:center;">
-58.255
-</td>
-<td style="text-align:center;">
-10.130
-</td>
-<td style="text-align:center;">
-0.151
-</td>
-<td style="text-align:center;">
-3.054
-</td>
-<td style="text-align:center;">
-0.045
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zimbabwe
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-83.209
-</td>
-<td style="text-align:center;">
-47.991
-</td>
-<td style="text-align:center;">
-10.116
-</td>
-<td style="text-align:center;">
-2.795
-</td>
-<td style="text-align:center;">
-3.050
-</td>
-<td style="text-align:center;">
-0.843
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gabon
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-81.800
-</td>
-<td style="text-align:center;">
-85.400
-</td>
-<td style="text-align:center;">
-4.647
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1.897
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Lao
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-81.745
-</td>
-<td style="text-align:center;">
-72.664
-</td>
-<td style="text-align:center;">
-12.154
-</td>
-<td style="text-align:center;">
-0.700
-</td>
-<td style="text-align:center;">
-3.665
-</td>
-<td style="text-align:center;">
-0.211
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Eswatini
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-81.045
-</td>
-<td style="text-align:center;">
-30.382
-</td>
-<td style="text-align:center;">
-9.060
-</td>
-<td style="text-align:center;">
-0.866
-</td>
-<td style="text-align:center;">
-2.732
-</td>
-<td style="text-align:center;">
-0.261
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cameroon
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-80.980
-</td>
-<td style="text-align:center;">
-46.600
-</td>
-<td style="text-align:center;">
-10.097
-</td>
-<td style="text-align:center;">
-2.176
-</td>
-<td style="text-align:center;">
-4.516
-</td>
-<td style="text-align:center;">
-0.973
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Russia
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-80.586
-</td>
-<td style="text-align:center;">
-49.400
-</td>
-<td style="text-align:center;">
-4.997
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-1.889
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Niger
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-80.127
-</td>
-<td style="text-align:center;">
-1.075
-</td>
-<td style="text-align:center;">
-13.037
-</td>
-<td style="text-align:center;">
-0.084
-</td>
-<td style="text-align:center;">
-3.931
-</td>
-<td style="text-align:center;">
-0.025
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kyrgyz Republic
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-79.700
-</td>
-<td style="text-align:center;">
-4.466
-</td>
-<td style="text-align:center;">
-4.015
-</td>
-<td style="text-align:center;">
-0.056
-</td>
-<td style="text-align:center;">
-1.211
-</td>
-<td style="text-align:center;">
-0.017
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-El Salvador
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-79.427
-</td>
-<td style="text-align:center;">
-15.800
-</td>
-<td style="text-align:center;">
-9.330
-</td>
-<td style="text-align:center;">
-0.736
-</td>
-<td style="text-align:center;">
-2.813
-</td>
-<td style="text-align:center;">
-0.222
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nigeria
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-78.982
-</td>
-<td style="text-align:center;">
-13.973
-</td>
-<td style="text-align:center;">
-8.630
-</td>
-<td style="text-align:center;">
-1.493
-</td>
-<td style="text-align:center;">
-2.602
-</td>
-<td style="text-align:center;">
-0.450
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Gambia
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-78.260
-</td>
-<td style="text-align:center;">
-45.680
-</td>
-<td style="text-align:center;">
-9.011
-</td>
-<td style="text-align:center;">
-0.870
-</td>
-<td style="text-align:center;">
-4.030
-</td>
-<td style="text-align:center;">
-0.389
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Suriname
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-78.091
-</td>
-<td style="text-align:center;">
-98.636
-</td>
-<td style="text-align:center;">
-6.243
-</td>
-<td style="text-align:center;">
-0.092
-</td>
-<td style="text-align:center;">
-1.882
-</td>
-<td style="text-align:center;">
-0.028
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Honduras
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-76.755
-</td>
-<td style="text-align:center;">
-56.500
-</td>
-<td style="text-align:center;">
-9.264
-</td>
-<td style="text-align:center;">
-4.161
-</td>
-<td style="text-align:center;">
-2.793
-</td>
-<td style="text-align:center;">
-1.255
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Eritrea
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-76.320
-</td>
-<td style="text-align:center;">
-15.550
-</td>
-<td style="text-align:center;">
-7.108
-</td>
-<td style="text-align:center;">
-0.158
-</td>
-<td style="text-align:center;">
-2.248
-</td>
-<td style="text-align:center;">
-0.050
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Madagascar
-</td>
-<td style="text-align:center;">
-7
-</td>
-<td style="text-align:center;">
-75.443
-</td>
-<td style="text-align:center;">
-22.214
-</td>
-<td style="text-align:center;">
-6.234
-</td>
-<td style="text-align:center;">
-0.168
-</td>
-<td style="text-align:center;">
-2.356
-</td>
-<td style="text-align:center;">
-0.063
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-South Korea
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-75.409
-</td>
-<td style="text-align:center;">
-65.009
-</td>
-<td style="text-align:center;">
-2.901
-</td>
-<td style="text-align:center;">
-0.359
-</td>
-<td style="text-align:center;">
-0.875
-</td>
-<td style="text-align:center;">
-0.108
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Papua New Guinea
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-75.236
-</td>
-<td style="text-align:center;">
-74.200
-</td>
-<td style="text-align:center;">
-7.412
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-2.235
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mauritania
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-75.145
-</td>
-<td style="text-align:center;">
-0.300
-</td>
-<td style="text-align:center;">
-9.107
-</td>
-<td style="text-align:center;">
-0.033
-</td>
-<td style="text-align:center;">
-2.746
-</td>
-<td style="text-align:center;">
-0.010
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Iran
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-74.936
-</td>
-<td style="text-align:center;">
-6.015
-</td>
-<td style="text-align:center;">
-9.363
-</td>
-<td style="text-align:center;">
-0.364
-</td>
-<td style="text-align:center;">
-2.823
-</td>
-<td style="text-align:center;">
-0.110
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ecuador
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-74.600
-</td>
-<td style="text-align:center;">
-53.945
-</td>
-<td style="text-align:center;">
-9.202
-</td>
-<td style="text-align:center;">
-1.769
-</td>
-<td style="text-align:center;">
-2.774
-</td>
-<td style="text-align:center;">
-0.533
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Costa Rica
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-73.845
-</td>
-<td style="text-align:center;">
-47.718
-</td>
-<td style="text-align:center;">
-3.987
-</td>
-<td style="text-align:center;">
-0.823
-</td>
-<td style="text-align:center;">
-1.202
-</td>
-<td style="text-align:center;">
-0.248
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Burkina Faso
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-73.700
-</td>
-<td style="text-align:center;">
-22.618
-</td>
-<td style="text-align:center;">
-13.448
-</td>
-<td style="text-align:center;">
-0.733
-</td>
-<td style="text-align:center;">
-4.055
-</td>
-<td style="text-align:center;">
-0.221
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mexico
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-73.370
-</td>
-<td style="text-align:center;">
-34.890
-</td>
-<td style="text-align:center;">
-7.593
-</td>
-<td style="text-align:center;">
-0.260
-</td>
-<td style="text-align:center;">
-2.401
-</td>
-<td style="text-align:center;">
-0.082
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Dominican Republic
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-72.973
-</td>
-<td style="text-align:center;">
-31.355
-</td>
-<td style="text-align:center;">
-14.140
-</td>
-<td style="text-align:center;">
-2.398
-</td>
-<td style="text-align:center;">
-4.263
-</td>
-<td style="text-align:center;">
-0.723
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Thailand
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-72.391
-</td>
-<td style="text-align:center;">
-32.109
-</td>
-<td style="text-align:center;">
-3.597
-</td>
-<td style="text-align:center;">
-0.718
-</td>
-<td style="text-align:center;">
-1.085
-</td>
-<td style="text-align:center;">
-0.216
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Colombia
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-72.145
-</td>
-<td style="text-align:center;">
-55.355
-</td>
-<td style="text-align:center;">
-5.831
-</td>
-<td style="text-align:center;">
-0.885
-</td>
-<td style="text-align:center;">
-1.758
-</td>
-<td style="text-align:center;">
-0.267
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Egypt
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-71.300
-</td>
-<td style="text-align:center;">
-0.061
-</td>
-<td style="text-align:center;">
-10.457
-</td>
-<td style="text-align:center;">
-0.007
-</td>
-<td style="text-align:center;">
-3.153
-</td>
-<td style="text-align:center;">
-0.002
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Angola
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-71.240
-</td>
-<td style="text-align:center;">
-47.750
-</td>
-<td style="text-align:center;">
-4.794
-</td>
-<td style="text-align:center;">
-0.303
-</td>
-<td style="text-align:center;">
-1.516
-</td>
-<td style="text-align:center;">
-0.096
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guinea-Bissau
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-71.109
-</td>
-<td style="text-align:center;">
-75.045
-</td>
-<td style="text-align:center;">
-4.404
-</td>
-<td style="text-align:center;">
-1.143
-</td>
-<td style="text-align:center;">
-1.328
-</td>
-<td style="text-align:center;">
-0.345
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-China
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-70.427
-</td>
-<td style="text-align:center;">
-19.218
-</td>
-<td style="text-align:center;">
-9.086
-</td>
-<td style="text-align:center;">
-0.947
-</td>
-<td style="text-align:center;">
-2.740
-</td>
-<td style="text-align:center;">
-0.286
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Cote d’Ivoire
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-70.089
-</td>
-<td style="text-align:center;">
-32.556
-</td>
-<td style="text-align:center;">
-5.827
-</td>
-<td style="text-align:center;">
-0.142
-</td>
-<td style="text-align:center;">
-1.942
-</td>
-<td style="text-align:center;">
-0.047
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nepal
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-67.855
-</td>
-<td style="text-align:center;">
-27.145
-</td>
-<td style="text-align:center;">
-5.132
-</td>
-<td style="text-align:center;">
-1.542
-</td>
-<td style="text-align:center;">
-1.547
-</td>
-<td style="text-align:center;">
-0.465
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Benin
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-67.782
-</td>
-<td style="text-align:center;">
-44.600
-</td>
-<td style="text-align:center;">
-9.342
-</td>
-<td style="text-align:center;">
-1.705
-</td>
-<td style="text-align:center;">
-2.817
-</td>
-<td style="text-align:center;">
-0.514
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Saudi Arabia
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-67.745
-</td>
-<td style="text-align:center;">
-0.450
-</td>
-<td style="text-align:center;">
-9.274
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-2.796
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bangladesh
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-66.118
-</td>
-<td style="text-align:center;">
-11.264
-</td>
-<td style="text-align:center;">
-6.611
-</td>
-<td style="text-align:center;">
-0.067
-</td>
-<td style="text-align:center;">
-1.993
-</td>
-<td style="text-align:center;">
-0.020
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Panama
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-65.627
-</td>
-<td style="text-align:center;">
-65.236
-</td>
-<td style="text-align:center;">
-3.572
-</td>
-<td style="text-align:center;">
-0.772
-</td>
-<td style="text-align:center;">
-1.077
-</td>
-<td style="text-align:center;">
-0.233
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Brazil
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-65.118
-</td>
-<td style="text-align:center;">
-62.000
-</td>
-<td style="text-align:center;">
-10.235
-</td>
-<td style="text-align:center;">
-1.095
-</td>
-<td style="text-align:center;">
-3.086
-</td>
-<td style="text-align:center;">
-0.330
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Indonesia
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-65.050
-</td>
-<td style="text-align:center;">
-55.440
-</td>
-<td style="text-align:center;">
-6.051
-</td>
-<td style="text-align:center;">
-1.891
-</td>
-<td style="text-align:center;">
-1.914
-</td>
-<td style="text-align:center;">
-0.598
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Kenya
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-64.670
-</td>
-<td style="text-align:center;">
-6.744
-</td>
-<td style="text-align:center;">
-11.225
-</td>
-<td style="text-align:center;">
-0.322
-</td>
-<td style="text-align:center;">
-3.550
-</td>
-<td style="text-align:center;">
-0.102
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Central African Republic
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-64.620
-</td>
-<td style="text-align:center;">
-35.940
-</td>
-<td style="text-align:center;">
-8.665
-</td>
-<td style="text-align:center;">
-0.097
-</td>
-<td style="text-align:center;">
-2.740
-</td>
-<td style="text-align:center;">
-0.031
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Philippines
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-64.236
-</td>
-<td style="text-align:center;">
-23.473
-</td>
-<td style="text-align:center;">
-8.475
-</td>
-<td style="text-align:center;">
-0.269
-</td>
-<td style="text-align:center;">
-2.555
-</td>
-<td style="text-align:center;">
-0.081
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Belize
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-64.140
-</td>
-<td style="text-align:center;">
-64.000
-</td>
-<td style="text-align:center;">
-16.507
-</td>
-<td style="text-align:center;">
-1.651
-</td>
-<td style="text-align:center;">
-5.220
-</td>
-<td style="text-align:center;">
-0.522
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sri Lanka
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-63.110
-</td>
-<td style="text-align:center;">
-34.620
-</td>
-<td style="text-align:center;">
-3.935
-</td>
-<td style="text-align:center;">
-0.668
-</td>
-<td style="text-align:center;">
-1.244
-</td>
-<td style="text-align:center;">
-0.211
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ethiopia
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-63.018
-</td>
-<td style="text-align:center;">
-13.564
-</td>
-<td style="text-align:center;">
-13.671
-</td>
-<td style="text-align:center;">
-0.465
-</td>
-<td style="text-align:center;">
-4.122
-</td>
-<td style="text-align:center;">
-0.140
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Pakistan
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-62.291
-</td>
-<td style="text-align:center;">
-2.686
-</td>
-<td style="text-align:center;">
-6.160
-</td>
-<td style="text-align:center;">
-0.181
-</td>
-<td style="text-align:center;">
-1.857
-</td>
-<td style="text-align:center;">
-0.055
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tanzania
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-61.850
-</td>
-<td style="text-align:center;">
-58.130
-</td>
-<td style="text-align:center;">
-6.450
-</td>
-<td style="text-align:center;">
-1.566
-</td>
-<td style="text-align:center;">
-2.040
-</td>
-<td style="text-align:center;">
-0.495
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Burundi
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-61.455
-</td>
-<td style="text-align:center;">
-7.843
-</td>
-<td style="text-align:center;">
-8.587
-</td>
-<td style="text-align:center;">
-0.674
-</td>
-<td style="text-align:center;">
-2.589
-</td>
-<td style="text-align:center;">
-0.203
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Liberia
-</td>
-<td style="text-align:center;">
-5
-</td>
-<td style="text-align:center;">
-61.240
-</td>
-<td style="text-align:center;">
-47.940
-</td>
-<td style="text-align:center;">
-6.207
-</td>
-<td style="text-align:center;">
-1.471
-</td>
-<td style="text-align:center;">
-2.776
-</td>
-<td style="text-align:center;">
-0.658
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Uganda
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-60.944
-</td>
-<td style="text-align:center;">
-18.611
-</td>
-<td style="text-align:center;">
-12.597
-</td>
-<td style="text-align:center;">
-1.439
-</td>
-<td style="text-align:center;">
-4.199
-</td>
-<td style="text-align:center;">
-0.480
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Armenia
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-60.736
-</td>
-<td style="text-align:center;">
-11.700
-</td>
-<td style="text-align:center;">
-7.225
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-2.178
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Senegal
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-60.660
-</td>
-<td style="text-align:center;">
-45.870
-</td>
-<td style="text-align:center;">
-5.413
-</td>
-<td style="text-align:center;">
-0.718
-</td>
-<td style="text-align:center;">
-1.712
-</td>
-<td style="text-align:center;">
-0.227
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-South Africa
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-60.127
-</td>
-<td style="text-align:center;">
-7.620
-</td>
-<td style="text-align:center;">
-6.959
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-2.098
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Ghana
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-59.964
-</td>
-<td style="text-align:center;">
-39.282
-</td>
-<td style="text-align:center;">
-6.246
-</td>
-<td style="text-align:center;">
-0.414
-</td>
-<td style="text-align:center;">
-1.883
-</td>
-<td style="text-align:center;">
-0.125
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guyana
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-58.780
-</td>
-<td style="text-align:center;">
-84.410
-</td>
-<td style="text-align:center;">
-9.246
-</td>
-<td style="text-align:center;">
-0.074
-</td>
-<td style="text-align:center;">
-2.924
-</td>
-<td style="text-align:center;">
-0.023
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Morocco
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-58.391
-</td>
-<td style="text-align:center;">
-11.536
-</td>
-<td style="text-align:center;">
-6.232
-</td>
-<td style="text-align:center;">
-0.388
-</td>
-<td style="text-align:center;">
-1.879
-</td>
-<td style="text-align:center;">
-0.117
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Paraguay
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-58.327
-</td>
-<td style="text-align:center;">
-48.273
-</td>
-<td style="text-align:center;">
-5.865
-</td>
-<td style="text-align:center;">
-1.532
-</td>
-<td style="text-align:center;">
-1.768
-</td>
-<td style="text-align:center;">
-0.462
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Turkmenistan
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-58.218
-</td>
-<td style="text-align:center;">
-8.780
-</td>
-<td style="text-align:center;">
-16.189
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-4.881
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-India
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-58.164
-</td>
-<td style="text-align:center;">
-22.245
-</td>
-<td style="text-align:center;">
-6.294
-</td>
-<td style="text-align:center;">
-0.396
-</td>
-<td style="text-align:center;">
-1.898
-</td>
-<td style="text-align:center;">
-0.119
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Bolivia
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-57.355
-</td>
-<td style="text-align:center;">
-55.209
-</td>
-<td style="text-align:center;">
-7.529
-</td>
-<td style="text-align:center;">
-0.861
-</td>
-<td style="text-align:center;">
-2.270
-</td>
-<td style="text-align:center;">
-0.260
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Togo
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-57.182
-</td>
-<td style="text-align:center;">
-8.564
-</td>
-<td style="text-align:center;">
-10.138
-</td>
-<td style="text-align:center;">
-1.214
-</td>
-<td style="text-align:center;">
-3.057
-</td>
-<td style="text-align:center;">
-0.366
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mauritius
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-55.750
-</td>
-<td style="text-align:center;">
-20.517
-</td>
-<td style="text-align:center;">
-8.404
-</td>
-<td style="text-align:center;">
-0.117
-</td>
-<td style="text-align:center;">
-3.431
-</td>
-<td style="text-align:center;">
-0.048
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Nicaragua
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-55.045
-</td>
-<td style="text-align:center;">
-31.109
-</td>
-<td style="text-align:center;">
-13.778
-</td>
-<td style="text-align:center;">
-1.927
-</td>
-<td style="text-align:center;">
-4.154
-</td>
-<td style="text-align:center;">
-0.581
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Mali
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-54.591
-</td>
-<td style="text-align:center;">
-4.771
-</td>
-<td style="text-align:center;">
-11.493
-</td>
-<td style="text-align:center;">
-0.213
-</td>
-<td style="text-align:center;">
-3.465
-</td>
-<td style="text-align:center;">
-0.064
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Azerbaijan
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-54.355
-</td>
-<td style="text-align:center;">
-10.564
-</td>
-<td style="text-align:center;">
-8.633
-</td>
-<td style="text-align:center;">
-0.143
-</td>
-<td style="text-align:center;">
-2.603
-</td>
-<td style="text-align:center;">
-0.043
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Malaysia
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-54.345
-</td>
-<td style="text-align:center;">
-65.227
-</td>
-<td style="text-align:center;">
-5.680
-</td>
-<td style="text-align:center;">
-1.055
-</td>
-<td style="text-align:center;">
-1.713
-</td>
-<td style="text-align:center;">
-0.318
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Algeria
-</td>
-<td style="text-align:center;">
-6
-</td>
-<td style="text-align:center;">
-53.683
-</td>
-<td style="text-align:center;">
-0.667
-</td>
-<td style="text-align:center;">
-4.482
-</td>
-<td style="text-align:center;">
-0.008
-</td>
-<td style="text-align:center;">
-1.830
-</td>
-<td style="text-align:center;">
-0.003
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Turkey
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-52.627
-</td>
-<td style="text-align:center;">
-13.400
-</td>
-<td style="text-align:center;">
-3.071
-</td>
-<td style="text-align:center;">
-0.352
-</td>
-<td style="text-align:center;">
-0.926
-</td>
-<td style="text-align:center;">
-0.106
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Oman
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-51.564
-</td>
-<td style="text-align:center;">
-0.010
-</td>
-<td style="text-align:center;">
-10.838
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-3.268
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guatemala
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-50.273
-</td>
-<td style="text-align:center;">
-38.809
-</td>
-<td style="text-align:center;">
-7.890
-</td>
-<td style="text-align:center;">
-1.643
-</td>
-<td style="text-align:center;">
-2.379
-</td>
-<td style="text-align:center;">
-0.496
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Zambia
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-49.900
-</td>
-<td style="text-align:center;">
-68.470
-</td>
-<td style="text-align:center;">
-4.220
-</td>
-<td style="text-align:center;">
-0.721
-</td>
-<td style="text-align:center;">
-1.335
-</td>
-<td style="text-align:center;">
-0.228
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Peru
-</td>
-<td style="text-align:center;">
-9
-</td>
-<td style="text-align:center;">
-48.789
-</td>
-<td style="text-align:center;">
-59.533
-</td>
-<td style="text-align:center;">
-4.928
-</td>
-<td style="text-align:center;">
-0.316
-</td>
-<td style="text-align:center;">
-1.643
-</td>
-<td style="text-align:center;">
-0.105
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Vietnam
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-47.618
-</td>
-<td style="text-align:center;">
-38.136
-</td>
-<td style="text-align:center;">
-12.355
-</td>
-<td style="text-align:center;">
-3.471
-</td>
-<td style="text-align:center;">
-3.725
-</td>
-<td style="text-align:center;">
-1.046
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guinea
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-47.060
-</td>
-<td style="text-align:center;">
-27.930
-</td>
-<td style="text-align:center;">
-7.182
-</td>
-<td style="text-align:center;">
-0.503
-</td>
-<td style="text-align:center;">
-2.271
-</td>
-<td style="text-align:center;">
-0.159
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Rwanda
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-46.470
-</td>
-<td style="text-align:center;">
-14.540
-</td>
-<td style="text-align:center;">
-11.136
-</td>
-<td style="text-align:center;">
-0.916
-</td>
-<td style="text-align:center;">
-3.522
-</td>
-<td style="text-align:center;">
-0.290
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Yemen
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-46.280
-</td>
-<td style="text-align:center;">
-1.040
-</td>
-<td style="text-align:center;">
-6.631
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-2.097
-</td>
-<td style="text-align:center;">
-0.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Uzbekistan
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-45.300
-</td>
-<td style="text-align:center;">
-7.585
-</td>
-<td style="text-align:center;">
-5.877
-</td>
-<td style="text-align:center;">
-0.126
-</td>
-<td style="text-align:center;">
-1.772
-</td>
-<td style="text-align:center;">
-0.038
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Chad
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-45.127
-</td>
-<td style="text-align:center;">
-4.988
-</td>
-<td style="text-align:center;">
-8.135
-</td>
-<td style="text-align:center;">
-0.107
-</td>
-<td style="text-align:center;">
-2.453
-</td>
-<td style="text-align:center;">
-0.032
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Congo, Rep. 
-</td>
-<td style="text-align:center;">
-4
-</td>
-<td style="text-align:center;">
-42.475
-</td>
-<td style="text-align:center;">
-66.125
-</td>
-<td style="text-align:center;">
-14.183
-</td>
-<td style="text-align:center;">
-0.222
-</td>
-<td style="text-align:center;">
-7.091
-</td>
-<td style="text-align:center;">
-0.111
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Sierra Leone
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-39.800
-</td>
-<td style="text-align:center;">
-40.190
-</td>
-<td style="text-align:center;">
-10.250
-</td>
-<td style="text-align:center;">
-0.946
-</td>
-<td style="text-align:center;">
-3.241
-</td>
-<td style="text-align:center;">
-0.299
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Tajikistan
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-38.982
-</td>
-<td style="text-align:center;">
-2.929
-</td>
-<td style="text-align:center;">
-10.913
-</td>
-<td style="text-align:center;">
-0.003
-</td>
-<td style="text-align:center;">
-3.290
-</td>
-<td style="text-align:center;">
-0.001
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Malawi
-</td>
-<td style="text-align:center;">
-11
-</td>
-<td style="text-align:center;">
-26.836
-</td>
-<td style="text-align:center;">
-37.473
-</td>
-<td style="text-align:center;">
-3.146
-</td>
-<td style="text-align:center;">
-1.161
-</td>
-<td style="text-align:center;">
-0.948
-</td>
-<td style="text-align:center;">
-0.350
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Myanmar
-</td>
-<td style="text-align:center;">
-10
-</td>
-<td style="text-align:center;">
-23.900
-</td>
-<td style="text-align:center;">
-53.030
-</td>
-<td style="text-align:center;">
-11.046
-</td>
-<td style="text-align:center;">
-1.907
-</td>
-<td style="text-align:center;">
-3.493
-</td>
-<td style="text-align:center;">
-0.603
-</td>
-</tr>
 </tbody>
 </table>
-<p>For #1, I grouped the data by country and used summarize to find the average number of malaria cases (per 100,000 people) from 1995-2005. I then arranged the resulting data from highest malaria incidence rate to lowest and found that Zambia had the highest overall rate of malaria incidence (35,800 cases/100,000 people). I was also curious to see what China’s overal malaria incidence rate was because China is undergoing significant agricultural expansion and intensification, and the rate of malaria incidence was much lower than Zambia’s (6.04 cases/100,000 people). For #2, I found the counts of the categorical variable (country) for each level, and it was 11 for most countries. This is logical because I used data from countries for each year between 1995 and 2005 (11 years total, and some countries might be missing data for a few years). For #3, I created a function inside of summarize to report the number of missing values for each variable. For #4, I found summary statistics using functions such as mean, sd, etc. for forest cover and the Livestock Production Index for each country averaged over the 11 yeats. The data are arranged from highest to lowest livestock production because I was curious to see if there appeared to be a realtionship between livestock production and forest cover.</p>
-<pre class="r"><code># stringr
-final_join %&gt;% distinct(country) %&gt;% summarize(sum(str_detect(country, 
-    &quot;[ ]&quot;)))</code></pre>
-<pre><code>## # A tibble: 1 × 1
-##   `sum(str_detect(country, &quot;[ ]&quot;))`
-##                               &lt;int&gt;
-## 1                                20</code></pre>
-<pre class="r"><code># 4 Proportion of land use for agriculture to land covered in
-# forest
-final_join %&gt;% mutate(prop_land = agriculture/forest_cover) %&gt;% 
-    select(country, year, forest_cover, agriculture, prop_land)</code></pre>
-<pre><code>## # A tibble: 1,166 × 5
-##    country      year forest_cover agriculture prop_land
-##    &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
-##  1 Afghanistan  1995         2.07        57.8      27.9
-##  2 Afghanistan  1996         2.07        57.9      28.0
-##  3 Afghanistan  1997         2.07        58        28.0
-##  4 Afghanistan  1998         2.07        57.8      27.9
-##  5 Afghanistan  1999         2.07        57.8      27.9
-##  6 Afghanistan  2000         2.07        57.8      27.9
-##  7 Afghanistan  2001         2.07        57.8      27.9
-##  8 Afghanistan  2002         2.07        58.1      28.1
-##  9 Afghanistan  2003         2.07        58.1      28.1
-## 10 Afghanistan  2004         2.07        58.1      28.1
-## # … with 1,156 more rows</code></pre>
-<pre class="r"><code># unique function 3
-final_join %&gt;% na.omit %&gt;% mutate(livestock_agri = livestock/agriculture) %&gt;% 
-    select(country, year, livestock, agriculture, livestock_agri)</code></pre>
-<pre><code>## # A tibble: 1,044 × 5
-##    country      year livestock agriculture livestock_agri
-##    &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
-##  1 Afghanistan  1995      93.2        57.8           1.61
-##  2 Afghanistan  1996     102          57.9           1.76
-##  3 Afghanistan  1997     109          58             1.88
-##  4 Afghanistan  2000      78.5        57.8           1.36
-##  5 Afghanistan  2001      94.6        57.8           1.64
-##  6 Afghanistan  2002      90          58.1           1.55
-##  7 Afghanistan  2003      96.7        58.1           1.66
-##  8 Afghanistan  2004      95.1        58.1           1.64
-##  9 Afghanistan  2005      84.3        58.1           1.45
-## 10 Angola       1996      62.5        37.3           1.68
-## # … with 1,034 more rows</code></pre>
 <pre class="r"><code># 5: Summary Statistics for Countries that overlap with the
 # Amazon Rainforest
 final_join %&gt;% filter(country %in% c(&quot;Brazil&quot;, &quot;Columbia&quot;, &quot;Peru&quot;, 
@@ -5584,7 +2209,7 @@ final_join %&gt;% filter(country %in% c(&quot;Brazil&quot;, &quot;Columbia&quot;
     na.omit() %&gt;% summarize(mean_malaria = mean(malaria), mean_livestock = mean(livestock), 
     mean_agriculture = mean(agriculture), mean_forest = mean(forest_cover)) %&gt;% 
     select(country, mean_malaria, mean_forest, mean_agriculture, 
-        mean_livestock) %&gt;% arrange(desc(mean_forest)) %&gt;% kable(align = &quot;lcccc&quot;, 
+        mean_livestock) %&gt;% arrange(mean_malaria) %&gt;% kable(align = &quot;lcccc&quot;, 
     digits = 3) %&gt;% kable_styling(font_size = 15)</code></pre>
 <table class="table" style="font-size: 15px; margin-left: auto; margin-right: auto;">
 <thead>
@@ -5609,36 +2234,19 @@ mean_livestock
 <tbody>
 <tr>
 <td style="text-align:left;">
-Suriname
+Venezuela
 </td>
 <td style="text-align:center;">
-2766.182
+119.709
 </td>
 <td style="text-align:center;">
-98.636
+55.418
 </td>
 <td style="text-align:center;">
-0.527
+24.473
 </td>
 <td style="text-align:center;">
-78.091
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Guyana
-</td>
-<td style="text-align:center;">
-3936.000
-</td>
-<td style="text-align:center;">
-84.410
-</td>
-<td style="text-align:center;">
-5.730
-</td>
-<td style="text-align:center;">
-58.780
+83.882
 </td>
 </tr>
 <tr>
@@ -5677,23 +2285,6 @@ Peru
 </tr>
 <tr>
 <td style="text-align:left;">
-Venezuela
-</td>
-<td style="text-align:center;">
-119.709
-</td>
-<td style="text-align:center;">
-55.418
-</td>
-<td style="text-align:center;">
-24.473
-</td>
-<td style="text-align:center;">
-83.882
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Bolivia
 </td>
 <td style="text-align:center;">
@@ -5709,9 +2300,46 @@ Bolivia
 57.355
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+Suriname
+</td>
+<td style="text-align:center;">
+2766.182
+</td>
+<td style="text-align:center;">
+98.636
+</td>
+<td style="text-align:center;">
+0.527
+</td>
+<td style="text-align:center;">
+78.091
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Guyana
+</td>
+<td style="text-align:center;">
+3936.000
+</td>
+<td style="text-align:center;">
+84.410
+</td>
+<td style="text-align:center;">
+5.730
+</td>
+<td style="text-align:center;">
+58.780
+</td>
+</tr>
 </tbody>
 </table>
-<pre class="r"><code># unique function 5
+<p>For #1, I grouped the data by country and used summarize to find the average number of malaria cases (per 100,000 people) from 1995-2005. I then arranged the resulting data from highest malaria incidence rate to lowest and found that Zambia had the highest overall rate of malaria incidence (35,800 cases/100,000 people). I was also curious to see what China’s overal malaria incidence rate was because China is undergoing significant agricultural expansion and intensification, and the rate of malaria incidence was much lower than Zambia’s (6.04 cases/100,000 people). For #2, I found the counts of the categorical variable (country) for each level, and it was 11 for most countries. This is logical because I used data from countries for each year between 1995 and 2005 (11 years total, and some countries might be missing data for a few years). For #3, I created a function inside of summarize to report the number of missing values for each variable. For #4, I found summary statistics using functions such as mean, sd, etc. for forest cover and the Livestock Production Index for each country averaged over the 11 yeats. The data are arranged from highest to lowest livestock production because I was curious to see if there appeared to be a relationship between livestock production and forest cover. For #5, I filtered the data to only include Amazonian countries, calculated the averages of the variables using summarize and the mean, and arranged the data from lowest to highest malaria incidence rate. It appears that Amazonian countries that have less forest cover have a lower average rate of malaria incidence (between 1995-2005).</p>
+<pre class="r"><code># 5: unique function 5
+library(gt)
+
 Nigeria_table &lt;- final_join %&gt;% filter(country == &quot;Nigeria&quot;) %&gt;% 
     mutate(`malaria/forest_cover` = malaria/forest_cover) %&gt;% 
     select(-agriculture, -livestock)
@@ -5730,8 +2358,7 @@ Nigeria_table</code></pre>
 ##  9 Nigeria  2003         12.6    2400                  190. 
 ## 10 Nigeria  2004         12.2    2500                  205. 
 ## 11 Nigeria  2005         11.7    2750                  235.</code></pre>
-<pre class="r"><code>library(gt)
-Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;), 
+<pre class="r"><code>Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;), 
     subtitle = md(&quot;A table of malaria cases per 100,000 people and the percent of land covered in forest&quot;)) %&gt;% 
     tab_spanner(label = &quot;Variables&quot;, columns = c(&quot;country&quot;, &quot;year&quot;, 
         &quot;forest_cover&quot;, &quot;malaria&quot;, &quot;malaria/forest_cover&quot;))</code></pre>
@@ -5739,7 +2366,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#tzuprpegdd .gt_table {
+#remosyeeqy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -5764,7 +2391,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-left-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_heading {
+#remosyeeqy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5776,7 +2403,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-right-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_title {
+#remosyeeqy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5786,7 +2413,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-bottom-width: 0;
 }
 
-#tzuprpegdd .gt_subtitle {
+#remosyeeqy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5796,13 +2423,13 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-top-width: 0;
 }
 
-#tzuprpegdd .gt_bottom_border {
+#remosyeeqy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_col_headings {
+#remosyeeqy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5817,7 +2444,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-right-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_col_heading {
+#remosyeeqy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5837,7 +2464,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   overflow-x: hidden;
 }
 
-#tzuprpegdd .gt_column_spanner_outer {
+#remosyeeqy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5849,15 +2476,15 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   padding-right: 4px;
 }
 
-#tzuprpegdd .gt_column_spanner_outer:first-child {
+#remosyeeqy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tzuprpegdd .gt_column_spanner_outer:last-child {
+#remosyeeqy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tzuprpegdd .gt_column_spanner {
+#remosyeeqy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5869,7 +2496,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   width: 100%;
 }
 
-#tzuprpegdd .gt_group_heading {
+#remosyeeqy .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5891,7 +2518,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   vertical-align: middle;
 }
 
-#tzuprpegdd .gt_empty_group_heading {
+#remosyeeqy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5906,15 +2533,15 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   vertical-align: middle;
 }
 
-#tzuprpegdd .gt_from_md > :first-child {
+#remosyeeqy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tzuprpegdd .gt_from_md > :last-child {
+#remosyeeqy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tzuprpegdd .gt_row {
+#remosyeeqy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5933,7 +2560,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   overflow-x: hidden;
 }
 
-#tzuprpegdd .gt_stub {
+#remosyeeqy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5945,7 +2572,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   padding-left: 12px;
 }
 
-#tzuprpegdd .gt_summary_row {
+#remosyeeqy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5955,7 +2582,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   padding-right: 5px;
 }
 
-#tzuprpegdd .gt_first_summary_row {
+#remosyeeqy .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5965,7 +2592,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-top-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_grand_summary_row {
+#remosyeeqy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5975,7 +2602,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   padding-right: 5px;
 }
 
-#tzuprpegdd .gt_first_grand_summary_row {
+#remosyeeqy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5985,11 +2612,11 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-top-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_striped {
+#remosyeeqy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tzuprpegdd .gt_table_body {
+#remosyeeqy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5998,7 +2625,7 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-bottom-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_footnotes {
+#remosyeeqy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6012,13 +2639,13 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-right-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_footnote {
+#remosyeeqy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#tzuprpegdd .gt_sourcenotes {
+#remosyeeqy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -6032,46 +2659,46 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   border-right-color: #D3D3D3;
 }
 
-#tzuprpegdd .gt_sourcenote {
+#remosyeeqy .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#tzuprpegdd .gt_left {
+#remosyeeqy .gt_left {
   text-align: left;
 }
 
-#tzuprpegdd .gt_center {
+#remosyeeqy .gt_center {
   text-align: center;
 }
 
-#tzuprpegdd .gt_right {
+#remosyeeqy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tzuprpegdd .gt_font_normal {
+#remosyeeqy .gt_font_normal {
   font-weight: normal;
 }
 
-#tzuprpegdd .gt_font_bold {
+#remosyeeqy .gt_font_bold {
   font-weight: bold;
 }
 
-#tzuprpegdd .gt_font_italic {
+#remosyeeqy .gt_font_italic {
   font-style: italic;
 }
 
-#tzuprpegdd .gt_super {
+#remosyeeqy .gt_super {
   font-size: 65%;
 }
 
-#tzuprpegdd .gt_footnote_marks {
+#remosyeeqy .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="tzuprpegdd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="remosyeeqy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="5" class="gt_heading gt_title gt_font_normal" style><strong>Nigeria</strong></th>
@@ -6176,6 +2803,48 @@ Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;),
   
   
 </table></div>
+<pre class="r"><code># 6: stringr
+final_join %&gt;% distinct(country) %&gt;% summarize(sum(str_detect(country, 
+    &quot;[ ]&quot;)))</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   `sum(str_detect(country, &quot;[ ]&quot;))`
+##                               &lt;int&gt;
+## 1                                20</code></pre>
+<pre class="r"><code># 4 Proportion of land use for agriculture to land covered in
+# forest
+final_join %&gt;% mutate(prop_land = agriculture/forest_cover) %&gt;% 
+    select(country, year, forest_cover, agriculture, prop_land)</code></pre>
+<pre><code>## # A tibble: 1,166 × 5
+##    country      year forest_cover agriculture prop_land
+##    &lt;chr&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+##  1 Afghanistan  1995         2.07        57.8      27.9
+##  2 Afghanistan  1996         2.07        57.9      28.0
+##  3 Afghanistan  1997         2.07        58        28.0
+##  4 Afghanistan  1998         2.07        57.8      27.9
+##  5 Afghanistan  1999         2.07        57.8      27.9
+##  6 Afghanistan  2000         2.07        57.8      27.9
+##  7 Afghanistan  2001         2.07        57.8      27.9
+##  8 Afghanistan  2002         2.07        58.1      28.1
+##  9 Afghanistan  2003         2.07        58.1      28.1
+## 10 Afghanistan  2004         2.07        58.1      28.1
+## # … with 1,156 more rows</code></pre>
+<pre class="r"><code># unique function 3
+final_join %&gt;% na.omit %&gt;% mutate(livestock_agri = livestock/agriculture) %&gt;% 
+    select(country, year, livestock, agriculture, livestock_agri)</code></pre>
+<pre><code>## # A tibble: 1,044 × 5
+##    country      year livestock agriculture livestock_agri
+##    &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;          &lt;dbl&gt;
+##  1 Afghanistan  1995      93.2        57.8           1.61
+##  2 Afghanistan  1996     102          57.9           1.76
+##  3 Afghanistan  1997     109          58             1.88
+##  4 Afghanistan  2000      78.5        57.8           1.36
+##  5 Afghanistan  2001      94.6        57.8           1.64
+##  6 Afghanistan  2002      90          58.1           1.55
+##  7 Afghanistan  2003      96.7        58.1           1.66
+##  8 Afghanistan  2004      95.1        58.1           1.64
+##  9 Afghanistan  2005      84.3        58.1           1.45
+## 10 Angola       1996      62.5        37.3           1.68
+## # … with 1,034 more rows</code></pre>
 <p>Your discussion of wrangling section here. Feel encouraged to break up into more than once code chunk and discuss each in turn.</p>
 </div>
 <div id="visualizing" class="section level4">

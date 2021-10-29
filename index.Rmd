@@ -131,7 +131,7 @@ library(knitr)
 library(kableExtra)
 
 #1: Average number of malaria cases (per 100,000 people) for each country from 1995-2005
-final_join %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria)) %>% arrange(desc(mean_malaria)) %>% kable(align = 'l', digits = 3) %>% kable_styling(font_size = 15)
+final_join %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria)) %>% arrange(desc(mean_malaria)) %>% head() %>% kable(align = 'l', digits = 3) %>% kable_styling(font_size = 15)
 
 final_join %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria)) %>% filter(country=="China")
 
@@ -142,16 +142,32 @@ final_join %>% group_by(country) %>% na.omit %>% summarize(n=n())
 final_join %>% summarize_all(function(x) sum(is.na(x)))
 
 #4: Overall Summary Statistics for Livestock Production Index and Forest Cover using different functions
-final_join %>% group_by(country) %>% na.omit() %>% summarize(sd_livestock=sd(livestock), sd_forest=sd(forest_cover), mean_livestock=mean(livestock), mean_forest=mean(forest_cover), n=n(), se_livestock=sd_livestock/sqrt(n), se_forest=sd_forest/sqrt(n)) %>% select(country, n, mean_livestock, mean_forest, everything()) %>% arrange(desc(mean_livestock)) %>% kable(align = 'lccccccc', digits = 3) %>% kable_styling(font_size = 10) 
+final_join %>% group_by(country) %>% na.omit() %>% summarize(sd_livestock=sd(livestock), sd_forest=sd(forest_cover), mean_livestock=mean(livestock), mean_forest=mean(forest_cover), n=n(), se_livestock=sd_livestock/sqrt(n), se_forest=sd_forest/sqrt(n)) %>% select(country, n, mean_livestock, mean_forest, everything()) %>% arrange(desc(mean_livestock)) %>% head() %>% kable(align = 'lccccccc', digits = 3) %>% kable_styling(font_size = 10) 
+
+#5: Summary Statistics for Countries that overlap with the Amazon Rainforest
+final_join %>% filter(country %in% c("Brazil","Columbia", "Peru", "Bolivia", "Venezuela", "Guyana", "Suriname")) %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria), mean_livestock=mean(livestock), mean_agriculture=mean(agriculture), mean_forest=mean(forest_cover)) %>% select(country, mean_malaria, mean_forest, mean_agriculture, mean_livestock) %>% arrange(mean_malaria) %>% kable(align = 'lcccc', digits = 3) %>% kable_styling(font_size = 15)
 
 ```
-For #1, I grouped the data by country and used summarize to find the average number of malaria cases (per 100,000 people) from 1995-2005. I then arranged the resulting data from highest malaria incidence rate to lowest and found that Zambia had the highest overall rate of malaria incidence (35,800 cases/100,000 people). I was also curious to see what China's overal malaria incidence rate was because China is undergoing significant agricultural expansion and intensification, and the rate of malaria incidence was much lower than Zambia's (6.04 cases/100,000 people). For #2, I found the counts of the categorical variable (country) for each level, and it was 11 for most countries. This is logical because I used data from countries for each year between 1995 and 2005 (11 years total, and some countries might be missing data for a few years). For #3, I created a function inside of summarize to report the number of missing values for each variable. For #4, I found summary statistics using functions such as mean, sd, etc. for forest cover and the Livestock Production Index for each country averaged over the 11 yeats. The data are arranged from highest to lowest livestock production because I was curious to see if there appeared to be a realtionship between livestock production and forest cover.
+For #1, I grouped the data by country and used summarize to find the average number of malaria cases (per 100,000 people) from 1995-2005. I then arranged the resulting data from highest malaria incidence rate to lowest and found that Zambia had the highest overall rate of malaria incidence (35,800 cases/100,000 people). I was also curious to see what China's overal malaria incidence rate was because China is undergoing significant agricultural expansion and intensification, and the rate of malaria incidence was much lower than Zambia's (6.04 cases/100,000 people). For #2, I found the counts of the categorical variable (country) for each level, and it was 11 for most countries. This is logical because I used data from countries for each year between 1995 and 2005 (11 years total, and some countries might be missing data for a few years). For #3, I created a function inside of summarize to report the number of missing values for each variable. For #4, I found summary statistics using functions such as mean, sd, etc. for forest cover and the Livestock Production Index for each country averaged over the 11 yeats. The data are arranged from highest to lowest livestock production because I was curious to see if there appeared to be a relationship between livestock production and forest cover. For #5, I filtered the data to only include Amazonian countries, calculated the averages of the variables using summarize and the mean, and arranged the data from lowest to highest malaria incidence rate. It appears that Amazonian countries that have less forest cover have a lower average rate of malaria incidence (between 1995-2005).
 
 
 ```{R}
-#stringr
-final_join %>% distinct(country) %>% summarize(sum(str_detect(country, "[ ]")))
+#5: Continued Summary Statistics Demonstration- Nigeria's Statistics
+library(gt)
 
+Nigeria_table<- final_join %>% filter(country=="Nigeria") %>% mutate("malaria/forest_cover"=malaria/forest_cover) %>% select(-agriculture, -livestock)
+
+Nigeria_table %>% gt %>% tab_header(title=md("**Nigeria**"), subtitle=md("A table of malaria cases per 100,000 people and the percent of land covered in forest")) %>% tab_spanner(label="Variables", columns=c("country", "year","malaria", "forest_cover", "malaria/forest_cover"))
+
+#6: stringr demonstration
+final_join %>% distinct(country) %>% summarize("n_countries_2+_words"=sum(str_detect(country, "[ ]")))
+
+
+```
+For #5, I filtered the data only show data for Nigeria, which is a country known for having one of the highest rates of deforestation. I used mutate to create a new variable comparing the rate of malaria incidence as a function of the percent of land covered by forest, and I used gt to create a table to depict the data for each year. It appears that as the percent of land covered in forest decreases, the rate of malaria cases increases over time. For #6, I used str_detect to find countries that whose names are longer than 2 words long
+
+
+```{R}
 
 #4 Proportion of land use for agriculture to land covered in forest
 final_join %>% mutate(prop_land=agriculture/forest_cover) %>% select(country, year, forest_cover, agriculture, prop_land)
@@ -160,26 +176,6 @@ final_join %>% mutate(prop_land=agriculture/forest_cover) %>% select(country, ye
 #unique function 3
 final_join %>% na.omit %>% mutate(livestock_agri=livestock/agriculture) %>% select(country, year, livestock, agriculture, livestock_agri)
 ```
-
-
-```{R}
-#5: Summary Statistics for Countries that overlap with the Amazon Rainforest
-final_join %>% filter(country %in% c("Brazil","Columbia", "Peru", "Bolivia", "Venezuela", "Guyana", "Suriname")) %>% group_by(country) %>% na.omit() %>% summarize(mean_malaria=mean(malaria), mean_livestock=mean(livestock), mean_agriculture=mean(agriculture), mean_forest=mean(forest_cover)) %>% select(country, mean_malaria, mean_forest, mean_agriculture, mean_livestock) %>% arrange(desc(mean_forest)) %>% kable(align = 'lcccc', digits = 3) %>% kable_styling(font_size = 15)
-```
-
-
-```{R}
-#unique function 5
-Nigeria_table<- final_join %>% filter(country=="Nigeria") %>% mutate("malaria/forest_cover"=malaria/forest_cover) %>% select(-agriculture, -livestock)
-Nigeria_table
-
-library(gt)
-Nigeria_table %>% gt %>% tab_header(title=md("**Nigeria**"), subtitle=md("A table of malaria cases per 100,000 people and the percent of land covered in forest")) %>% tab_spanner(label="Variables", columns=c("country", "year","forest_cover", "malaria", "malaria/forest_cover"))
-
-```
-
-Your discussion of wrangling section here. Feel encouraged to break up into more than once code chunk and discuss each in turn.
-
 
 #### Visualizing
 
