@@ -2337,36 +2337,23 @@ Guyana
 </tbody>
 </table>
 <p>For #1, I grouped the data by country and used summarize to find the average number of malaria cases (per 100,000 people) from 1995-2005. I then arranged the resulting data from highest malaria incidence rate to lowest and found that Zambia had the highest overall rate of malaria incidence (35,800 cases/100,000 people). I was also curious to see what China’s overal malaria incidence rate was because China is undergoing significant agricultural expansion and intensification, and the rate of malaria incidence was much lower than Zambia’s (6.04 cases/100,000 people). For #2, I found the counts of the categorical variable (country) for each level, and it was 11 for most countries. This is logical because I used data from countries for each year between 1995 and 2005 (11 years total, and some countries might be missing data for a few years). For #3, I created a function inside of summarize to report the number of missing values for each variable. For #4, I found summary statistics using functions such as mean, sd, etc. for forest cover and the Livestock Production Index for each country averaged over the 11 yeats. The data are arranged from highest to lowest livestock production because I was curious to see if there appeared to be a relationship between livestock production and forest cover. For #5, I filtered the data to only include Amazonian countries, calculated the averages of the variables using summarize and the mean, and arranged the data from lowest to highest malaria incidence rate. It appears that Amazonian countries that have less forest cover have a lower average rate of malaria incidence (between 1995-2005).</p>
-<pre class="r"><code># 5: unique function 5
+<pre class="r"><code># 5: Continued Summary Statistics Demonstration- Nigeria&#39;s
+# Statistics
 library(gt)
 
 Nigeria_table &lt;- final_join %&gt;% filter(country == &quot;Nigeria&quot;) %&gt;% 
     mutate(`malaria/forest_cover` = malaria/forest_cover) %&gt;% 
     select(-agriculture, -livestock)
-Nigeria_table</code></pre>
-<pre><code>## # A tibble: 11 × 5
-##    country  year forest_cover malaria `malaria/forest_cover`
-##    &lt;chr&gt;   &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;                  &lt;dbl&gt;
-##  1 Nigeria  1995         16.2    1030                   63.6
-##  2 Nigeria  1996         15.8     997                   63.1
-##  3 Nigeria  1997         15.3    1790                  117. 
-##  4 Nigeria  1998         14.9    1620                  109. 
-##  5 Nigeria  1999         14.4    1990                  138. 
-##  6 Nigeria  2000         14      1760                  126. 
-##  7 Nigeria  2001         13.5    1980                  147. 
-##  8 Nigeria  2002         13.1    1940                  148. 
-##  9 Nigeria  2003         12.6    2400                  190. 
-## 10 Nigeria  2004         12.2    2500                  205. 
-## 11 Nigeria  2005         11.7    2750                  235.</code></pre>
-<pre class="r"><code>Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;), 
+
+Nigeria_table %&gt;% gt %&gt;% tab_header(title = md(&quot;**Nigeria**&quot;), 
     subtitle = md(&quot;A table of malaria cases per 100,000 people and the percent of land covered in forest&quot;)) %&gt;% 
     tab_spanner(label = &quot;Variables&quot;, columns = c(&quot;country&quot;, &quot;year&quot;, 
-        &quot;forest_cover&quot;, &quot;malaria&quot;, &quot;malaria/forest_cover&quot;))</code></pre>
+        &quot;malaria&quot;, &quot;forest_cover&quot;, &quot;malaria/forest_cover&quot;))</code></pre>
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#remosyeeqy .gt_table {
+#gtivpmrjcx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2391,7 +2378,7 @@ Nigeria_table</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_heading {
+#gtivpmrjcx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2403,7 +2390,7 @@ Nigeria_table</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_title {
+#gtivpmrjcx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2413,7 +2400,7 @@ Nigeria_table</code></pre>
   border-bottom-width: 0;
 }
 
-#remosyeeqy .gt_subtitle {
+#gtivpmrjcx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2423,13 +2410,13 @@ Nigeria_table</code></pre>
   border-top-width: 0;
 }
 
-#remosyeeqy .gt_bottom_border {
+#gtivpmrjcx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_col_headings {
+#gtivpmrjcx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2444,7 +2431,7 @@ Nigeria_table</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_col_heading {
+#gtivpmrjcx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2464,7 +2451,7 @@ Nigeria_table</code></pre>
   overflow-x: hidden;
 }
 
-#remosyeeqy .gt_column_spanner_outer {
+#gtivpmrjcx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2476,15 +2463,15 @@ Nigeria_table</code></pre>
   padding-right: 4px;
 }
 
-#remosyeeqy .gt_column_spanner_outer:first-child {
+#gtivpmrjcx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#remosyeeqy .gt_column_spanner_outer:last-child {
+#gtivpmrjcx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#remosyeeqy .gt_column_spanner {
+#gtivpmrjcx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2496,7 +2483,7 @@ Nigeria_table</code></pre>
   width: 100%;
 }
 
-#remosyeeqy .gt_group_heading {
+#gtivpmrjcx .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2518,7 +2505,7 @@ Nigeria_table</code></pre>
   vertical-align: middle;
 }
 
-#remosyeeqy .gt_empty_group_heading {
+#gtivpmrjcx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2533,15 +2520,15 @@ Nigeria_table</code></pre>
   vertical-align: middle;
 }
 
-#remosyeeqy .gt_from_md > :first-child {
+#gtivpmrjcx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#remosyeeqy .gt_from_md > :last-child {
+#gtivpmrjcx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#remosyeeqy .gt_row {
+#gtivpmrjcx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2560,7 +2547,7 @@ Nigeria_table</code></pre>
   overflow-x: hidden;
 }
 
-#remosyeeqy .gt_stub {
+#gtivpmrjcx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2572,7 +2559,7 @@ Nigeria_table</code></pre>
   padding-left: 12px;
 }
 
-#remosyeeqy .gt_summary_row {
+#gtivpmrjcx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2582,7 +2569,7 @@ Nigeria_table</code></pre>
   padding-right: 5px;
 }
 
-#remosyeeqy .gt_first_summary_row {
+#gtivpmrjcx .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2592,7 +2579,7 @@ Nigeria_table</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_grand_summary_row {
+#gtivpmrjcx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2602,7 +2589,7 @@ Nigeria_table</code></pre>
   padding-right: 5px;
 }
 
-#remosyeeqy .gt_first_grand_summary_row {
+#gtivpmrjcx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2612,11 +2599,11 @@ Nigeria_table</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_striped {
+#gtivpmrjcx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#remosyeeqy .gt_table_body {
+#gtivpmrjcx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2625,7 +2612,7 @@ Nigeria_table</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_footnotes {
+#gtivpmrjcx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2639,13 +2626,13 @@ Nigeria_table</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_footnote {
+#gtivpmrjcx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#remosyeeqy .gt_sourcenotes {
+#gtivpmrjcx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2659,46 +2646,46 @@ Nigeria_table</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#remosyeeqy .gt_sourcenote {
+#gtivpmrjcx .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#remosyeeqy .gt_left {
+#gtivpmrjcx .gt_left {
   text-align: left;
 }
 
-#remosyeeqy .gt_center {
+#gtivpmrjcx .gt_center {
   text-align: center;
 }
 
-#remosyeeqy .gt_right {
+#gtivpmrjcx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#remosyeeqy .gt_font_normal {
+#gtivpmrjcx .gt_font_normal {
   font-weight: normal;
 }
 
-#remosyeeqy .gt_font_bold {
+#gtivpmrjcx .gt_font_bold {
   font-weight: bold;
 }
 
-#remosyeeqy .gt_font_italic {
+#gtivpmrjcx .gt_font_italic {
   font-style: italic;
 }
 
-#remosyeeqy .gt_super {
+#gtivpmrjcx .gt_super {
   font-size: 65%;
 }
 
-#remosyeeqy .gt_footnote_marks {
+#gtivpmrjcx .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="remosyeeqy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="gtivpmrjcx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   <thead class="gt_header">
     <tr>
       <th colspan="5" class="gt_heading gt_title gt_font_normal" style><strong>Nigeria</strong></th>
@@ -2716,8 +2703,8 @@ Nigeria_table</code></pre>
     <tr>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">country</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">year</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">forest_cover</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">malaria</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">forest_cover</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">malaria/forest_cover</th>
     </tr>
   </thead>
@@ -2725,91 +2712,92 @@ Nigeria_table</code></pre>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">1995</td>
-      <td class="gt_row gt_right">16.2</td>
       <td class="gt_row gt_right">1030</td>
+      <td class="gt_row gt_right">16.2</td>
       <td class="gt_row gt_right">63.58025</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">1996</td>
-      <td class="gt_row gt_right">15.8</td>
       <td class="gt_row gt_right">997</td>
+      <td class="gt_row gt_right">15.8</td>
       <td class="gt_row gt_right">63.10127</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">1997</td>
-      <td class="gt_row gt_right">15.3</td>
       <td class="gt_row gt_right">1790</td>
+      <td class="gt_row gt_right">15.3</td>
       <td class="gt_row gt_right">116.99346</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">1998</td>
-      <td class="gt_row gt_right">14.9</td>
       <td class="gt_row gt_right">1620</td>
+      <td class="gt_row gt_right">14.9</td>
       <td class="gt_row gt_right">108.72483</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">1999</td>
-      <td class="gt_row gt_right">14.4</td>
       <td class="gt_row gt_right">1990</td>
+      <td class="gt_row gt_right">14.4</td>
       <td class="gt_row gt_right">138.19444</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">2000</td>
-      <td class="gt_row gt_right">14.0</td>
       <td class="gt_row gt_right">1760</td>
+      <td class="gt_row gt_right">14.0</td>
       <td class="gt_row gt_right">125.71429</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">2001</td>
-      <td class="gt_row gt_right">13.5</td>
       <td class="gt_row gt_right">1980</td>
+      <td class="gt_row gt_right">13.5</td>
       <td class="gt_row gt_right">146.66667</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">2002</td>
-      <td class="gt_row gt_right">13.1</td>
       <td class="gt_row gt_right">1940</td>
+      <td class="gt_row gt_right">13.1</td>
       <td class="gt_row gt_right">148.09160</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">2003</td>
-      <td class="gt_row gt_right">12.6</td>
       <td class="gt_row gt_right">2400</td>
+      <td class="gt_row gt_right">12.6</td>
       <td class="gt_row gt_right">190.47619</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">2004</td>
-      <td class="gt_row gt_right">12.2</td>
       <td class="gt_row gt_right">2500</td>
+      <td class="gt_row gt_right">12.2</td>
       <td class="gt_row gt_right">204.91803</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Nigeria</td>
       <td class="gt_row gt_right">2005</td>
-      <td class="gt_row gt_right">11.7</td>
       <td class="gt_row gt_right">2750</td>
+      <td class="gt_row gt_right">11.7</td>
       <td class="gt_row gt_right">235.04274</td>
     </tr>
   </tbody>
   
   
 </table></div>
-<pre class="r"><code># 6: stringr
-final_join %&gt;% distinct(country) %&gt;% summarize(sum(str_detect(country, 
+<pre class="r"><code># 6: stringr demonstration
+final_join %&gt;% distinct(country) %&gt;% summarize(`n_countries_2+_words` = sum(str_detect(country, 
     &quot;[ ]&quot;)))</code></pre>
 <pre><code>## # A tibble: 1 × 1
-##   `sum(str_detect(country, &quot;[ ]&quot;))`
-##                               &lt;int&gt;
-## 1                                20</code></pre>
+##   `n_countries_2+_words`
+##                    &lt;int&gt;
+## 1                     20</code></pre>
+<p>For #5, I filtered the data only show data for Nigeria, which is a country known for having one of the highest rates of deforestation. I used mutate to create a new variable comparing the rate of malaria incidence as a function of the percent of land covered by forest, and I used gt to create a table to depict the data for each year. It appears that as the percent of land covered in forest decreases, the rate of malaria cases increases over time. For #6, I used str_detect to find countries that whose names are longer than 2 words long</p>
 <pre class="r"><code># 4 Proportion of land use for agriculture to land covered in
 # forest
 final_join %&gt;% mutate(prop_land = agriculture/forest_cover) %&gt;% 
@@ -2845,7 +2833,6 @@ final_join %&gt;% na.omit %&gt;% mutate(livestock_agri = livestock/agriculture) 
 ##  9 Afghanistan  2005      84.3        58.1           1.45
 ## 10 Angola       1996      62.5        37.3           1.68
 ## # … with 1,034 more rows</code></pre>
-<p>Your discussion of wrangling section here. Feel encouraged to break up into more than once code chunk and discuss each in turn.</p>
 </div>
 <div id="visualizing" class="section level4">
 <h4>Visualizing</h4>

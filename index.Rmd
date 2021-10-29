@@ -162,13 +162,11 @@ Nigeria_table %>% gt %>% tab_header(title=md("**Nigeria**"), subtitle=md("A tabl
 #6: stringr demonstration
 final_join %>% distinct(country) %>% summarize("n_countries_2+_words"=sum(str_detect(country, "[ ]")))
 
-
 ```
 For #5, I filtered the data only show data for Nigeria, which is a country known for having one of the highest rates of deforestation. I used mutate to create a new variable comparing the rate of malaria incidence as a function of the percent of land covered by forest, and I used gt to create a table to depict the data for each year. It appears that as the percent of land covered in forest decreases, the rate of malaria cases increases over time. For #6, I used str_detect to find countries that whose names are longer than 2 words long
 
 
 ```{R}
-
 #4 Proportion of land use for agriculture to land covered in forest
 final_join %>% mutate(prop_land=agriculture/forest_cover) %>% select(country, year, forest_cover, agriculture, prop_land)
 
