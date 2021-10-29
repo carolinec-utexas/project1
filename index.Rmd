@@ -88,10 +88,10 @@ final_join <- inner_join(first_join, second_join, by="country_year")
 final_join<- final_join %>% separate("country_year", into=c("country", "year"), sep="_")
 
 #total rows in each dataset
-glimpse(forest_coverage)
-glimpse(malaria_prop)
-glimpse(agriculture)
-glimpse(livestock)
+nrow(forest_coverage)
+nrow(malaria_prop)
+nrow(agriculture)
+nrow(livestock)
 
 #unique IDs in each dataset
 n_distinct(forest_coverage)
@@ -188,42 +188,42 @@ Your discussion of wrangling section here. Feel encouraged to break up into more
 #### Visualizing
 
 ```{R}
-# your plot 1
+# Plot #1
 library(ggplot2)
 
 ggplot(data = final_join, aes(x = agriculture, y = forest_cover)) + geom_point(aes(color=year, size=malaria))+
-  geom_smooth(method="lm")+ scale_color_gradient(low="yellow", high="red")+ ggtitle("Comparison of Land Used for Agriculture vs Covered in Forest")+ xlab("Percent of Land Used for Agriculture")+ ylab("Percent of Land Covered in Forest")+ scale_y_continuous(breaks=seq(0, 100, 10))+ scale_x_continuous(breaks=seq(0, 100, 10))+ theme_gray()
+  geom_smooth(method="lm")+ scale_color_gradient(low="green", high="red")+ ggtitle("Land Used for Agriculture vs Covered in Forest in Different Countries")+ xlab("Percent of Land Used for Agriculture")+ ylab("Percent of Land Covered in Forest")+ scale_y_continuous(breaks=seq(0, 100, 10))+ scale_x_continuous(breaks=seq(0, 100, 10))+ theme_gray()+ theme(plot.title=element_text(hjust=0.5, size=11), axis.title=element_text(size=9))
 
 ```
 
-Your discussion of plot 1
+In Plot #1, I graphed the percent of land used for agriculture against the percent of land covered in forest for different countries. I colored the data points by year and changed the size of the datapoints based on the number of malaria cases (per 100,000 people). There is a negative correlation between percent of land used for agriculture versus used for forest. Additionally, the datapoints turn from green to red from left to right. This indicates that over time, increased land is being converted for agricultural purposes, and decreased land is covered in forest. Based on background research, there appears to be a causative relationship between decreased forest cover and increased agricultural land: deforestation occurs in order to create space for agricultural production because as the global population increases, the demand for food has increased. However, the plot above simply show a correlation between these variables.
 
 ```{R}
-# your plot 2 could do bar plot with brazil and such
+#Plot #2
 amazon <- final_join %>% filter(country %in% c("Brazil","Columbia", "Peru", "Bolivia", "Venezuela", "Guyana", "Suriname"))
 
- ggplot(amazon, aes(x = country, y = malaria, fill=country))+
-  geom_bar(stat="summary",fun=mean)+
-  geom_errorbar(stat="summary", fun.data=mean_se, width=.5)+ggtitle("Malaria Cases per 100,000 people in Amazonian Countries")+ xlab("Country")+ ylab("Malaria Cases (per 100,000 people)")+ theme(legend.position="none")
+ ggplot(amazon, aes(x = country, y = malaria))+
+  geom_bar(aes(fill=country), stat="summary",fun=mean)+
+  geom_errorbar(stat="summary", fun.data=mean_se, width=.5)+ ggtitle("Average Malaria Incidence Rate in Amazonian Countries (1995-2005)")+ xlab("Country")+ ylab("Malaria Cases (per 100,000 people)")+ theme(legend.position="none")+ theme(plot.title=element_text(hjust=0.5), axis.text=element_text(size=10))+ scale_y_continuous(breaks=seq(0, 5000, 500))
 
 
 ```
 
-Your discussion of plot 2
+In Plot #2, I created a bar graph depicting the average number of malaria cases (per 100,000 people) in countries that overlap with the Amazon Rainforest between the years 1995 and 20005. I chose to graph these countries because background research indicates that the Amazon is undergoing significant deforestation, and the wildlife-human interface (contact between humans, malaria-carrying mosquitoes, and  animals that are food sources for mosquitoes) as changed as a reuslt. Guyana had the most variation in malaria cases between the years, and Venezuela's malaria cases were fairly constant across the 11 years. Additionally, countries that had higher rates of malaria incidence also tended to have larger stanard deviations (i.e. there is more variation in the rate of malaria cases over time in countries that tend to have larger overall rates of malaria cases). 
 
 ```{R}
-# your plot 3 nigeria??
+# Plot #3
 deforest <- final_join %>% filter(country %in% c("Nigeria","Honduras", "Philippines", "Benin", "Ghana", "Indonesia", "Nepal"))
 
-ggplot(data = deforest, aes(x= year, y= livestock))+ geom_point(aes(color=country), size=2)+ geom_smooth(aes(color=country), method="lm", se=F, size=.5)+ theme_gray()+ ggtitle("Livestock Production in Countries with High Deforestation Rates")+ ylab("Livestock Production Index")+ xlab("Year")+ scale_x_continuous(breaks=seq(1995, 2005, 1))+ theme_bw()+ geom_point(stat="summary", size=6)+ geom_smooth(method="lm", color="black")
+ggplot(data = deforest, aes(x= year, y= livestock))+ geom_point(aes(color=country), size=2)+ geom_smooth(aes(color=country), method="lm", se=F, size=.5)+ theme_gray()+ ggtitle("Livestock Production in Countries with High Deforestation Rates")+ ylab("Livestock Production Index")+ xlab("Year")+ scale_x_continuous(breaks=seq(1995, 2005, 1))+ geom_point(stat="summary", size=4)+ geom_smooth(method="lm", color="black")+ theme(plot.title=element_text(hjust=0.5))+ scale_color_discrete("Country")
 
 ```
 
-Your discussion of plot 3
+According to previous research, global demand for animal products has increased, especially demand for meat, as countries across the globe become more developed. As a result, livestock production is increasing. Additionally, raising animals for meat uses a significant amount of land and is noted as one of the primary drivers of deforestation. In Plot #3 I graphed the Livestock Production Index of 7 countries that are known for having high rates of deforestation. (The Livestock Production Index is a measure created to assess the amount of animal products produced in different countries, and the values range from 32.64 to 359.72). There is a positive correlation between time and the Livestock Production Index. In other words, as time passes (between 1995-2005), the magnitude of livestock production in countries with high deforestation rates increases. I also graphed the overall Livestock Production Index of these countries overtime (the black datapoints). Based on the plot, it appears that overall livestock production increased from 58 to 88 from 1995 to 2005.
 
 #### Concluding Remarks
 
-If any!
+Based on the analyses above, there appears to be a relationship between environmental factors and the incidence of malaria. (However, it is important to note that all of these analyses show correlations and therefore do not show causative relationships between the variables.) It was interesting to take patterns that are observed in the real world and apply data science techniques to them to see if my analyses also demonstrated these trends. Environmental factors have also been studied in the context of zoonotic emergence (Ebola, SARS-CoV-2, Nipah, etc.), so it could be interesting to analyze the relationship between the emergence of zoonoses and the presence of environmental factors at their outbreak sites. 
 
 
 
