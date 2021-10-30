@@ -161,19 +161,12 @@ Nigeria_table %>% gt %>% tab_header(title=md("**Nigeria**"), subtitle=md("A tabl
 
 #6: stringr demonstration
 final_join %>% distinct(country) %>% summarize("n_countries_2+_words"=sum(str_detect(country, "[ ]")))
+final_join %>% distinct(country) %>% slice_max(str_length(country))
 
+#7: Comparisons of means and medians for malaria cases, forest cover, agricultural land, and livestock production
+final_join %>% na.omit %>% summarize(mean_malaria=mean(malaria), median_malaria=median(malaria), mean_forest=mean(forest_cover), median_forest=median(forest_cover), mean_agriculture=mean(agriculture), median_agriculture=median(agriculture), mean_livestock=mean(livestock), median_livestock=median(livestock))
 ```
-For #5, I filtered the data only show data for Nigeria, which is a country known for having one of the highest rates of deforestation. I used mutate to create a new variable comparing the rate of malaria incidence as a function of the percent of land covered by forest, and I used gt to create a table to depict the data for each year. It appears that as the percent of land covered in forest decreases, the rate of malaria cases increases over time. For #6, I used str_detect to find countries that whose names are longer than 2 words long
-
-
-```{R}
-#4 Proportion of land use for agriculture to land covered in forest
-final_join %>% mutate(prop_land=agriculture/forest_cover) %>% select(country, year, forest_cover, agriculture, prop_land)
-
-
-#unique function 3
-final_join %>% na.omit %>% mutate(livestock_agri=livestock/agriculture) %>% select(country, year, livestock, agriculture, livestock_agri)
-```
+For #5, I filtered the data only show data for Nigeria, which is a country known for having one of the highest rates of deforestation. I used mutate to create a new variable comparing the rate of malaria incidence as a function of the percent of land covered by forest, and I used gt to create a table to depict the data for each year. It appears that as the percent of land covered in forest decreases, the rate of malaria cases increases over time. For #6, I used str_detect to find countries that include a space in their name (i.e. are longer than 1 word). I used distinct to remove any duplicate and summarize with sum to find the total number of different countries that are at least 2 words long. I also used slice max to provide the country with the longest character length (calculated using str_length), and it was "Central African Republic." For #7, I used summarize to find the means and medians of the variables malaria cases per 100,000 people, percent of land covered in forest, percent of land used for agriculture, and the Livestock Production Index. When the mean and median are close, this indicates the data is likely normally distributed, when the mean and median differ, this indicates the data is probably skewed. The mean and median for each of variables were similar for all the variables except for malaria. The mean malaria cases (per 100,000 people) was 5,087.15, and the median was 525, which indicates the data is probably positively skewed. 
 
 #### Visualizing
 
@@ -208,8 +201,18 @@ deforest <- final_join %>% filter(country %in% c("Nigeria","Honduras", "Philippi
 ggplot(data = deforest, aes(x= year, y= livestock))+ geom_point(aes(color=country), size=2)+ geom_smooth(aes(color=country), method="lm", se=F, size=.5)+ theme_gray()+ ggtitle("Livestock Production in Countries with High Deforestation Rates")+ ylab("Livestock Production Index")+ xlab("Year")+ scale_x_continuous(breaks=seq(1995, 2005, 1))+ geom_point(stat="summary", size=4)+ geom_smooth(method="lm", color="black")+ theme(plot.title=element_text(hjust=0.5))+ scale_color_discrete("Country")
 
 ```
-
 According to previous research, global demand for animal products has increased, especially demand for meat, as countries across the globe become more developed. As a result, livestock production is increasing. Additionally, raising animals for meat uses a significant amount of land and is noted as one of the primary drivers of deforestation. In Plot #3 I graphed the Livestock Production Index of 7 countries that are known for having high rates of deforestation. (The Livestock Production Index is a measure created to assess the amount of animal products produced in different countries, and the values range from 32.64 to 359.72). There is a positive correlation between time and the Livestock Production Index. In other words, as time passes (between 1995-2005), the magnitude of livestock production in countries with high deforestation rates increases. I also graphed the overall Livestock Production Index of these countries overtime (the black datapoints). Based on the plot, it appears that overall livestock production increased from 58 to 88 from 1995 to 2005.
+
+```{R}
+#Plot #4
+high_malaria <- final_join %>% filter(country %in% c("Zambia","Uganda", "Malawi", "Sao Tome and Principe", "Burundi"))
+
+ ggplot(high_malaria, aes(x = country, y = agriculture))+
+  geom_boxplot(aes(fill=country))+ ggtitle("Percent of Land Used for Agriculture in Countries with the Highest Malaria Incidence Rates from 1995-2005")+ xlab("Country")+ ylab("Percent of Land Used for Agriculture")+ theme_bw()+ theme(legend.position="none")+ theme(plot.title=element_text(hjust=0.5, size=10), axis.text=element_text(size=11))+ scale_y_continuous(breaks=seq(0,100,10))+ geom_jitter(alpha=.5, aes(color=country))
+
+
+```
+In Plot #4, I graphed the percent of land used for agriculture (averaged from 1995-2005) for the countries that had the highest number of malaria cases (per 100,000 people). The countries were chosen based on the results of Data Wrangling Demonstration #1 (above). There appears to be variation in the percent of land used for agriculture across the 5 countries. Zambia, which had the highest overall malaria incidence rate, had the lowest overall percent of land used for agriculture. Excluding Zambia, the countries had approximately between 45-75% of their land used for agriculture.
 
 #### Concluding Remarks
 
