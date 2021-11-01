@@ -8,6 +8,8 @@ output:
     toc_float:
       collapsed: no
       smooth_scroll: yes
+  word_document:
+    toc: no
   pdf_document:
     toc: no
 ---
@@ -33,7 +35,6 @@ library(tidyverse)
 library(dplyr)
 
 agriculture<-read_csv("agriculture.csv")
-forest<- read_csv("forest.csv")
 livestock <- read_csv("livestock.csv")
 forest_coverage <- read_csv("forest_coverage.csv")
 malaria_prop <- read_csv("malaria_prop.csv")
@@ -57,7 +58,7 @@ new_forest<- forest_coverage1 %>% unite(country, year, col="country_year", sep="
 malaira_prop1 <- malaria_prop %>% pivot_longer(c("1995":"2005"), names_to="year", values_to="malaria") %>% select(country, year, malaria)
 new_malaria_prop <-malaira_prop1 %>% unite(country, year, col="country_year", sep="_")
 
-#Agriculture: the percent of a country's total land area that used for permanently for crops or pasture
+#Agriculture: the percent of a country's total land area that is used for permanently for crops or pasture
 agriculture1 <- agriculture %>% pivot_longer(c("1995":"2005"), names_to="year", values_to="agriculture") %>% select(country, year, agriculture)
 new_agriculture <-agriculture1 %>% unite(country, year, col="country_year", sep="_")
 
@@ -113,7 +114,7 @@ Calculations Discussion: There are 230 rows in the forest dataset, 107 rows in t
 ####  Wrangling
 
 ```{R}
-# your wrangling code
+# wrangling code
 #convert variables to numeric
 final_join$year <-as.numeric(as.character(final_join$year))
 final_join$malaria <- as.numeric(sub("k", "e3", final_join$malaria, fixed= TRUE))
@@ -162,7 +163,7 @@ final_join %>% distinct(country) %>% summarize("n_countries_>1_word"=sum(str_det
 final_join %>% distinct(country) %>% slice_max(str_length(country))
 
 #7: Comparisons of means and medians for malaria cases, forest cover, agricultural land, and livestock production
-final_join %>% na.omit %>% summarize(mean_malaria=mean(malaria), median_malaria=median(malaria), mean_forest=mean(forest_cover), median_forest=median(forest_cover), mean_agriculture=mean(agriculture), median_agriculture=median(agriculture), mean_livestock=mean(livestock), median_livestock=median(livestock))
+final_join %>% na.omit %>% summarize(mean_malaria=mean(malaria), median_malaria=median(malaria), mean_forest=mean(forest_cover), median_forest=median(forest_cover), mean_agriculture=mean(agriculture), median_agriculture=median(agriculture), mean_livestock=mean(livestock), median_livestock=median(livestock)) %>% kable(align = 'cccccccc', digits = 3) %>% kable_styling(font_size = 11)
 
 ```
 For #5, I filtered the data to only show data for Nigeria, which is a country known for having one of the highest rates of deforestation. I used mutate to create a new variable comparing the rate of malaria incidence as a function of the percent of land covered by forest, and I used gt to create a table to depict the data for each year. It appears that as the percent of land covered in forest decreases, the rate of malaria cases increases over time. For #6, I used str_detect to find countries that include a space in their name (i.e. are longer than 1 word). I used distinct to remove any duplicate and summarize with sum to find the total number of different countries that are longer than 1 word. There are 20. I also used slice max to provide the country with the longest character length (calculated using str_length), and it was "Central African Republic." For #7, I used summarize to find the means and medians of the variables malaria cases per 100,000 people, percent of land covered in forest, percent of land used for agriculture, and the Livestock Production Index. When the mean and median are close, this indicates the data are likely normally distributed. When the mean and median differ, this indicates the data are probably skewed. The mean and median for each of variables were similar for all the variables except for malaria. The mean malaria cases (per 100,000 people) was 5,087.15, and the median was 525, which indicates the data is probably positively skewed. 
